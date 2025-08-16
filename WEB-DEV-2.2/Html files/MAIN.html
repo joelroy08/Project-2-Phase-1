@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soil and Fertilizers | NurseryLive</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Main.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-green shadow-sm px-4">
+  <a class="navbar-brand" href="#"><img src="Mainlogo.jpg" alt="marisagarden" width="230px"></a>
+  <form class="form-inline w-50">
+    <input class="form-control w-100 rounded-pill" type="search" placeholder="What are you looking for?" aria-label="Search">
+  </form>
+  <div class="d-flex align-items-center gap-3">
+    <span> <img src="Expertsupporticon.jpg" id="expertlogo" >Expert Support<small> 24/7</small></span>
+    <button type="button" class="btn btn-outline-dark btn-sm" ><a href="Login.html" target="_self"></a>Login</button>
+    <i class="bi bi-cart4 fs-4"></i>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Soil and Fertilizers</li>
+    </ol>
+  </nav>
+</div>
+
+<!-- Page Heading -->
+<div class="container">
+  <h2>Soil and Fertilizers</h2>
+  <p>Result: <strong>55 products.</strong> Just like humans need food for sustainability, plants need soil and fertilizers that provide all the essential nutrients for them to grow. Whatever your g... <a href="#">read more ></a></p>
+</div>
+
+<!-- Categories -->
+<div class="container d-flex justify-content-between flex-wrap text-center my-4">
+  <div>
+    <img src="Fertilizers1.jpg" alt="error" id="fert1" class="rounded-circle" width="130">
+    <p class="mt-2">Best Seller Soil and Fertilizer</p>
+  </div>
+  <div>
+    <img src="Fertilizer2.jpg" alt="error" id="fert2" class="rounded-circle" width="130">
+    <p class="mt-2">Organic Fertilizer</p>
+  </div>
+  <div>
+    <img src="Fertilizer3.jpg" alt="error" id="fert3" class="rounded-circle" width="130">
+    <p class="mt-2">Potting Soil</p>
+  </div>
+  <div>
+    <img src="Fertilizer4.jpg" alt="error" id="fert4" class="rounded-circle" width="130">
+    <p class="mt-2">Cocopeat</p>
+  </div>
+  <div>
+    <img src="Fertilizer5.jpg" alt="error" id="fert4" class="rounded-circle" width="130">
+    <p class="mt-2">Soil Additives</p>
+  </div>
+</div>
+
+<!-- Filter and Products -->
+<div class="container my-5">
+  <div class="row">
+    <!-- Sidebar Filters -->
+    <div class="col-md-3">
+      <h5>Plants</h5>
+      <ul class="list-group">
+        <li class="list-group-item">Plants by Type</li>
+        <li class="list-group-item">Plants by Season</li>
+        <li class="list-group-item">Plants by Location</li>
+        <li class="list-group-item">Foliage Plants</li>
+        <li class="list-group-item">Flowering Plants</li>
+      </ul>
+    </div>
+
+    <!-- Product List -->
+    <div class="col-md-9">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div><strong>Sort by:</strong> Best selling</div>
+        <div>
+          <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+          <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-list"></i></button>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Example Product -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://nurserylive.com/cdn/shop/products/vermicompost.jpg?v=1678360414" class="card-img-top" alt="Vermicompost">
+            <div class="card-body">
+              <h6 class="card-title">Vermicompost</h6>
+              <p class="card-text">Best quality organic fertilizer for plants.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat more product cards here as needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container my-5">
+  <h4 class="mb-4">Value For Money - Upto 35% Off</h4>
+  <div id="productList" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4"></div>
+</section>
+
+
+
+
+<script>
+  const products = [
+    {
+      img: "Flower1.jpg",
+      title: "Top 4 Plants to Bring Goodluck and Prosperity",
+      price: 772,
+      oldPrice: 1029,
+      discount: "Save 25%"
+    },
+    {
+      img: "Flower2.jpg",
+      title: "Ixora (Pack of 3) - Plants",
+      price: 858,
+      oldPrice: 1073,
+      discount: "Save 20%"
+    },
+    {
+      img: "Flower3.jpg",
+      title: "Set of 3 impressive Aglaonema Plants to Decorate Living Room",
+      price: 1078,
+      oldPrice: 1347,
+      discount: "Save 20%"
+    },
+    {
+      img: "Flower4.jpg",
+      title: "Beautiful Flower Garden in a Balcony",
+      price: 3624,
+      oldPrice: 5575,
+      discount: "Save 35%"
+    },
+    {
+      img: "Flower5.jpg",
+      title: "Set of 2 Snake Plants",
+      price: 574,
+      oldPrice: 718,
+      discount: "Save 20%"
+    }
+  ];
+
+  const productList = document.getElementById("productList");
+
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "col";
+    card.innerHTML = `
+      <div class="product-card h-100">
+        <span class="badge-discount">${product.discount}</span>
+        <img src="${product.img}" class="product-img w-100" alt="${product.title}">
+        <div class="mb-1 old-price">₹${product.oldPrice}</div>
+        <div class="mb-2 price">₹${product.price}</div>
+        <p>${product.title}</p>
+        <button class="btn btn-outline-danger w-100">Add to cart</button>
+      </div>
+    `;
+    productList.appendChild(card);
+  });
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap JS and Icons -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</body>
+</html>

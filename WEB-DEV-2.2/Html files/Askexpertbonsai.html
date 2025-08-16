@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2-Expert Here</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      position: relative;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    /* Background image with blur */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') no-repeat center center/cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    h1 {
+      color: #23a323;
+      text-shadow: 2px 2px 5px rgba(182, 174, 174, 0.7);
+      margin-top: 40px;
+      font-size: 3rem;
+    }
+
+    .glass-card {
+      background: rgba(10, 255, 63, 0.15);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      color: rgb(0, 0, 0);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: scale(1.05);
+    }
+
+    .glass-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Expert Here</h1>
+  <div class="container mt-5">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="glass-card">
+          <img src="Bonsaiplantcart2 (1).jpg" alt="Aloe Vera">
+          <h3>Ficus Bonsai</h3>
+<p>🌿 Ficus Ginseng Bonsai – Care Tips
+
+Light: Bright, indirect light; some morning sun is fine.
+
+Soil: Well-draining bonsai mix (akadama/sand + compost + perlite).
+
+Water: Keep soil slightly moist; water when top layer is dry.
+
+Temperature: 15°C–30°C; avoid frost & cold drafts.
+
+Fertilizer: Balanced bonsai feed (10:10:10) every 2–4 weeks in growing season.
+
+Humidity: Moderate; occasional misting helps.
+
+Care: Prune for shape; repot every 2–3 years.
+</p>        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card">
+          <img src="Bonsaiplantcart2.1.jpg" alt="Snake Plant">
+          <h3>Bird Plum Bonsai</h3>
+          <p>🌿 Chinese Elm Bonsai – Care Tips
+
+Light: Prefers bright light; can tolerate some direct sunlight.
+
+Soil: Well-draining bonsai mix with organic matter.
+
+Water: Keep soil evenly moist; do not let it dry out completely.
+
+Temperature: Ideal 15°C–25°C; protect from frost.
+
+Fertilizer: Balanced bonsai feed every 2 weeks in growing season, monthly in winter.
+
+Humidity: Moderate; mist occasionally in dry environments.
+
+Care: Regular pruning to maintain shape; repot every 2–3 years in spring.
+
+
+
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

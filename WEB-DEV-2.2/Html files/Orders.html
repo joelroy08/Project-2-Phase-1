@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Details - Marisa Garden</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* Page background */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d4f7d0, #a1e6a0);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* Header */
+.header-main {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.header-main .logo a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #23a323;
+}
+.header-main .support-login {
+    font-size: 0.9rem;
+    color: #333;
+}
+.support-icon {
+    color: #23a323;
+    margin-right: 8px;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin-top: 40px;
+}
+
+/* Glass effect card */
+.order-details-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+h2 {
+    color: #23a323;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table th {
+    background: #23a323;
+    color: white;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+
+/* Status badges */
+.badge-success {
+    background-color: #23a323;
+}
+.badge-warning {
+    background-color: #ff9800;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<div class="header-main d-flex justify-content-between align-items-center">
+    <div class="logo"><a href="#">Marisa <i>garden</i></a></div>
+    <div class="support-login d-flex align-items-center">
+        <i class="bi bi-chat-left-text support-icon"></i>
+        <span>Expert Support <br><strong>Available 24/7</strong></span>
+    </div>
+</div>
+
+<!-- Order Details -->
+<div class="container">
+    <div class="order-details-card" id="orderDetailsCard">
+        <!-- Order summary will be rendered here by JS -->
+    </div>
+</div>
+
+<script>
+function renderOrder() {
+    const orderDetailsCard = document.getElementById('orderDetailsCard');
+    // Get last order from localStorage
+    const lastOrder = JSON.parse(localStorage.getItem('lastOrder') || 'null');
+    if (!lastOrder || !lastOrder.items || lastOrder.items.length === 0) {
+        orderDetailsCard.innerHTML = `
+            <h2>Order Summary</h2>
+            <div class="text-center my-5">
+                <h4>No recent orders found.</h4>
+                <a href="SAMPLE3.html" class="btn btn-primary mt-3">Shop Now</a>
+            </div>
+        `;
+        return;
+    }
+
+    // Order info
+    const orderId = lastOrder.orderId || '#MG' + Math.floor(100000 + Math.random() * 900000);
+    const orderDate = lastOrder.orderDate || new Date().toLocaleDateString();
+    const deliveryDate = lastOrder.deliveryDate || new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString();
+    const shippingAddress = lastOrder.shippingAddress || '123 Green Street, Garden City, India';
+    const shippingMethod = lastOrder.shippingMethod || 'Express Delivery';
+    const paymentStatus = lastOrder.paymentStatus || 'Paid';
+
+    // Group items by name+price+img
+    const grouped = {};
+    lastOrder.items.forEach(item => {
+        const key = `${item.name}|${item.price}|${item.img}`;
+        if (!grouped[key]) {
+            grouped[key] = { ...item, quantity: 1 };
+        } else {
+            grouped[key].quantity += 1;
+        }
+    });
+    const groupedItems = Object.values(grouped);
+
+    let grandTotal = 0;
+    let rows = '';
+    groupedItems.forEach(item => {
+        const total = item.price * item.quantity;
+        grandTotal += total;
+        rows += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>₹${item.price}</td>
+                <td>₹${total}</td>
+            </tr>
+        `;
+    });
+
+    rows += `
+        <tr>
+            <th colspan="3" class="text-right">Grand Total</th>
+            <th>₹${grandTotal}</th>
+        </tr>
+    `;
+
+    orderDetailsCard.innerHTML = `
+        <h2>Order Summary</h2>
+        <p><strong>Order ID:</strong> ${orderId}</p>
+        <p><strong>Order Date:</strong> ${orderDate}</p>
+        <p><strong>Estimated Delivery:</strong> ${deliveryDate}</p>
+        <p><strong>Shipping Address:</strong> ${shippingAddress}</p>
+        <p><strong>Shipping Method:</strong> ${shippingMethod}</p>
+        <p><strong>Payment Status:</strong> <span class="badge badge-success">${paymentStatus}</span></p>
+        <h4 class="mt-4">Items Ordered</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price (₹)</th>
+                    <th>Total (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${rows}
+            </tbody>
+        </table>
+        <div class="text-center mt-3">
+            <a href="SAMPLE3.html" class="btn btn-success">Back to Home</a>
+            <a href="Orders.html" class="btn btn-primary">View All Orders</a>
+        </div>
+    `;
+}
+document.addEventListener('DOMContentLoaded', renderOrder);
+</script>
+</body>
+</html>

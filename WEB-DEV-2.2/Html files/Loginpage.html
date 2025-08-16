@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Marisa Garden</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* Page background */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d4f7d0, #a1e6a0);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* Header */
+.header-main {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.header-main .logo a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #23a323;
+}
+.header-main .support-login {
+    font-size: 0.9rem;
+    color: #333;
+}
+.support-icon {
+    color: #23a323;
+    margin-right: 8px;
+}
+
+/* Login container */
+.container-fluid {
+    max-width: 420px;
+    margin-top: 80px;
+}
+
+/* Login card with glass effect */
+.login-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+h2 {
+    color: #23a323;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+.form-control:focus {
+    border-color: #23a323;
+    box-shadow: 0 0 8px rgba(35, 163, 35, 0.4);
+}
+
+/* Button */
+.btn-primary {
+    background-color: #23a323;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #1c8e1c;
+    transform: scale(1.02);
+}
+
+/* Link */
+a {
+    color: #23a323;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+  <img src="Sankeplantcart4.0.jpg" alt="Garden Background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5;">
+
+<!-- Header -->
+<div class="header-main d-flex justify-content-between align-items-center">
+    <div class="logo"><a href="#">Marisa<i>Garden</i></a></div>
+    <div class="support-login d-flex align-items-center">
+        <i class="bi bi-chat-left-text support-icon"></i>
+        <span>Expert Support <br><strong>Available 24/7</strong></span>
+    </div>
+</div>
+
+<!-- Login Form -->
+<div class="container-fluid">
+    <div class="login-card">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                <div class="invalid-feedback">Please provide a valid username.</div>
+            </div>
+            <div class="form-group">
+                <label>Email address:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <div class="invalid-feedback">Please provide your password.</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <p class="text-center mt-3">Don't have an account? <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/Newuser.html" target="_self">Register here</a></p>
+        </form>
+    </div>
+</div>
+
+<script>
+function validateForm() {
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    if (username.value.trim() === '') {
+        username.classList.add('is-invalid');
+        return false;
+    } else {
+        username.classList.remove('is-invalid');
+    }
+
+    if (!email.checkValidity()) {
+        email.classList.add('is-invalid');
+        return false;
+    } else {
+        email.classList.remove('is-invalid');
+    }
+
+    if (!password.checkValidity()) {
+        password.classList.add('is-invalid');
+        return false;
+    } else {
+        password.classList.remove('is-invalid');
+    }
+
+    // Custom login check
+    if (
+        username.value.trim() === 'Joel' &&
+        email.value.trim() === 'joelroyparayil@gmail.com' &&
+        password.value === 'joelroy'
+    ) {
+        localStorage.setItem('loggedInUser', 'Joel'); // Set login flag
+        window.location.href = "SAMPLE3.html?login=1";
+        return false; // Prevent default form submission
+    } else {
+        // Remove login flag if credentials are wrong
+        localStorage.removeItem('loggedInUser');
+        alert('Invalid credentials!');
+        return false;
+    }
+}
+</script>
+</body>
+</html>

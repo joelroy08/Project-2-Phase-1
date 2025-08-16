@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake Plant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+
+ body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+  }
+
+  .logo a{
+    text-decoration: none;
+   color: #23a323;
+  }
+
+  /* Top bar */
+  .top-bar {
+    
+    padding: 0.5rem 1rem;
+    background-color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .top-bar a {
+    color: #111;
+    text-decoration: none;
+    margin-right: 1.5rem;
+  }
+
+  .top-bar a.rewards {
+    background-color: #ff6b6b;
+    color: white !important;
+    padding: 0.18rem 0.6rem;
+    border-radius: 0.35rem;
+    font-weight: 600;
+  }
+
+  .top-bar a:hover {
+    text-decoration: underline;
+    color: #ff6b6b !important;
+  }
+
+  /* Social icons */
+  .social-icons a {
+    color: #666;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #ff6b6b;
+  }
+
+  /* Header */
+  .header-main {
+    margin: 0 20px 0 50px;
+    padding: 1rem 0 0.25rem 0;
+    font-weight: 400;
+  }
+
+  .header-main .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    font-family: "Arial Black", Arial, sans-serif;
+  }
+
+  .header-main .logo span {
+    color: #23a323;
+  }
+
+  .search-bar {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding-right: 3.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ddd;
+    height: 2.25rem;
+    font-size: 0.95rem;
+  }
+
+  .search-bar button {
+    position: absolute;
+    right: 0.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 0.32rem 0.9rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  .header-right .support-login {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 1.25rem;
+    color: #333;
+    user-select: none;
+  }
+
+  .header-right .support-login .support-icon,
+  .header-right .support-login .login-icon {
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  .header-right .cart {
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+ /* Navigation */
+ .navbar{
+    border: none;
+ }
+nav.navbar {
+  margin: 0 20px 0 100px;
+ 
+  padding: 0.5rem 0;
+}
+
+nav.navbar .navbar-nav {
+  display: flex;
+  justify-content: space-evenly; /* Even spacing */
+  width: 100%;
+}
+
+nav.navbar .nav-link {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+}
+
+nav.navbar .nav-link:hover,
+nav.navbar .nav-link:focus {
+  color: #02f51b;
+  text-decoration: none;
+}
+
+/* Dropdown hover effect */
+.dropdown-item {
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-item:hover {
+  transform: scale(1.1);
+  background-color: #1cd31c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .thumbnail-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .related-product img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .related-product:hover {
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+
+    .discount-badge {
+      background-color: #ff6b6b;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .price-line-through {
+      text-decoration: line-through;
+      color: #999;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .final-price {
+      color: #e53935;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .highlight-info {
+      font-size: 0.9rem;
+      border-right: 1px solid #ccc;
+      padding-right: 10px;
+      margin-right: 10px;
+    }
+
+    .highlight-info:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    .btn-add-cart {
+      background-color: #ff6b6b;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #e55353;
+    }
+
+
+
+
+/* Magnifier styles */
+.magnifier-container {
+  position: relative;
+  cursor: none;
+}
+
+#magnifier-lens {
+  position: absolute;
+  border: 2px solid #ccc;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  visibility: hidden;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  z-index: 10;
+}
+
+
+.related-product a{
+  text-decoration: none;
+  color: #111;
+}
+
+    
+.site-footer {
+  background-color: #f6f4ef;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  color: #444;
+  width: 100%; /* ensure full width */
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%; /* remove max-width constraint */
+  margin: auto;
+}
+
+
+.footer-column {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.footer-column h4 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.footer-column ul li a:hover {
+  color: #fc5e5e;
+}
+
+.social-section {
+  display: flex;
+  flex-direction: column;
+  margin-right:100px;
+}
+
+.social-section h4 {
+  margin-bottom: 10px;
+  
+  
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.social-icons i {
+  font-size: 18px;
+  background-color: #ddd;
+  border-radius: 50%;
+  padding: 8px;
+  color: #555;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.social-icons i:hover {
+  background-color: #fc5e5e;
+  color: white;
+}
+
+.subscribe-section h4 {
+  margin-bottom: 10px;
+}
+
+.subscribe-section p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.subscribe-box {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.subscribe-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  font-size: 0.95rem;
+  width: 180px;
+  
+}
+
+.subscribe-box button {
+height: 45px;
+  width: 200px;
+  background-color: #fc5e5e;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+ 
+}
+
+.subscribe-box button:hover {
+  background-color: #e24b4b;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .subscribe-box input,
+  .subscribe-box button {
+    width: 100%;
+    border-radius: 4px;
+    margin: 5px 0;
+  }
+}
+
+.site-footer-container{
+  padding: 100px 0 0 0 ;
+  
+  margin-bottom: 5px;
+}
+
+.header-main{
+     
+      margin: 0 10px 0 20px;
+
+    }
+
+  .support-login a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Top bar
+  <div class="top-bar d-flex justify-content-between align-items-center container-fluid">
+    <div>
+      <a href="#" class="rewards">Rewards</a>
+      <a href="#">Help</a>
+      <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/orders.html" target="_blank">My Orders</a>
+      <a href="#">Offers</a>
+    </div>
+    <div class="social-icons d-none d-md-flex">
+      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+  </div> -->
+
+  <!-- Header main with logo, search, support, login and cart -->
+  <div class="header-main d-flex flex-wrap align-items-center ">
+    <div class="logo col-auto pe-3">
+       
+      <span><a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/SAMPLE3.html" target="_self">Marisa<i>Garden</i> </a></span>
+      
+    </div>
+    <div class="search-bar col flex-grow-1 px-2">
+      <input type="search" placeholder=" What are you looking for?" aria-label="Search products" />
+      <button aria-label="Search"><i class="bi bi-search"></i></button>
+    </div>
+    <div class="header-right col-auto d-flex align-items-center">
+      <div class="support-login">
+        <i class="bi bi-chat-left-text support-icon"></i><span>Expert Support<br /><strong>Available 24/7</strong></span>
+      </div>
+      <div class="support-login ms-4" id="loginStatus">
+        <i class="bi bi-lightning-charge login-icon"></i>
+        <span>
+          <a href="Loginpage.html">Login</a>
+        </span>
+      </div>
+      <a href="Mycart.html" target="_blank">
+        <div class="cart ms-4" role="button" title="Shopping Cart" tabindex="0">
+          <i class="bi bi-cart"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-md   container ">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav fw-semibold">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gardening
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Top plants' pack</a></li>
+            <li><a class="dropdown-item" href="#">Packs by Featurers</a></li>
+            <li><a class="dropdown-item" href="#">Miniature Garden & Kits</a></li>
+            <li><a class="dropdown-item" href="#">Packs by Location</a></li>
+            <li><a class="dropdown-item" href="#">Packs by Occasions</a></li>
+            <li><a class="dropdown-item" href="#">Pack by Season</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Plants
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Plants</a></li>
+            <li><a class="dropdown-item" href="#">Flowering Plants</a></li>
+            <li><a class="dropdown-item" href="#">By Location</a></li>
+            <li><a class="dropdown-item" href="#">By Type </a></li>
+            <li><a class="dropdown-item" href="#">By Season</a></li>
+            <li><a class="dropdown-item" href="#">BY Color</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Seeds
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Seeds</a></li>
+            <li><a class="dropdown-item" href="#">Flower Seeds</a></li>
+            <li><a class="dropdown-item" href="#">>Seeds by Name</a></li>
+            <li><a class="dropdown-item" href="#">Vegetabe/Herb</a></li>
+            <li><a class="dropdown-item" href="#">Easy to Grow Seeds</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Bulbs
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Flower Bulbs</a></li>
+            <li><a class="dropdown-item" href="#">Bulbs by Name</a></li>
+            <li><a class="dropdown-item" href="#">Bulbs by Flower color</a></li>
+            <li><a class="dropdown-item" href="#">Bulbs by Sowing Time</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Planters
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Planters</a></li>
+            <li><a class="dropdown-item" href="#">Planters by Type</a></li>
+            <li><a class="dropdown-item" href="#">Planters by Material</a></li>
+            <li><a class="dropdown-item" href="#">Planters by color</a></li>
+            <li><a class="dropdown-item" href="#">Planters by Size</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Soil & Fertilizer
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Best Seller Soil and Fertilizer</a></li>
+            <li><a class="dropdown-item" href="#">Soil and Fertilizers Pack</a></li>
+            <li><a class="dropdown-item" href="#">Organic Fertilizers</a></li>
+            <li><a class="dropdown-item" href="#">Potting Soil</a></li>
+            <li><a class="dropdown-item" href="#">Cocopeat</a></li>
+            <li><a class="dropdown-item" href="#">Soil Additives</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gifts
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Gifts</a></li>
+            <li><a class="dropdown-item" href="#">Plants as Corporate Gifts</a></li>
+            <li><a class="dropdown-item" href="#">Gifts for Festivals</a></li>
+            <li><a class="dropdown-item" href="#">Gifts for Loved ones</a></li>
+            <li><a class="dropdown-item" href="#">Gifts for Occasions</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pebbles
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Trending Pebbles</a></li>
+            <li><a class="dropdown-item" href="#">Pebbles by Shape</a></li>
+            <li><a class="dropdown-item" href="#">Pebbles by Color</a></li>
+            <li><a class="dropdown-item" href="#">Pebbles by Size</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Accessories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Best Seller Accessories</a></li>
+            <li><a class="dropdown-item" href="#">Gardening Tools</a></li>
+            <li><a class="dropdown-item" href="#">Miniature Garden Toys</a></li>
+            <li><a class="dropdown-item" href="#">Addons</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Corporate Gifting</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- Left: Image Gallery -->
+    <div class="col-md-6">
+      <div class="mb-3">
+        <img src="Sankeplantcart4.0.jpg" class="thumbnail-img w-100" alt="Main Plant">
+      </div>
+      <div class="row g-2">
+        <div class="col-6">
+          <img src="Snakeplantcart4.1.jpg" class="thumbnail-img" alt="">
+        </div>
+       <div class="col-6">
+          <img src="Snakeplantcart4.2.jpg" class="thumbnail-img" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Product Details -->
+    <!-- Center: Product Details -->
+<div class="col-md-4">
+  <h4>Snake Plant, Dracaena trifasciata  (Pack of 2) - Plant</h4>
+  <div class="mb-2 text-warning">
+    ★★★★☆ <span class="text-muted small">70 reviews</span>
+  </div>
+  <div class="mb-2">
+    <span class="discount-badge">Save 40%</span>
+    <span class="price-line-through">₹1046</span>
+    <span class="final-price">₹627</span>
+  </div>
+  <div class="mb-2 text-muted small">(MRP Inclusive of all taxes)</div>
+  <div class="d-flex mb-3 text-success">
+    <div class="highlight-info">Shipping ₹79 for entire order</div>
+    <div class="highlight-info">Dispatch in 7 days</div>
+    <div class="highlight-info">Country of origin: India</div>
+  </div>
+
+  <div class="related-product p-2 d-flex align-items-center border mb-2 rounded">
+    <img src="Sankeplantcart4.0.jpg" class="me-3" alt="">
+    <div>
+      <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/1-Snakeplant.html">
+      <div class="fw-medium">Snake Plant</div>
+      <div class="text-danger">₹523</div>
+      </a>
+    </div>
+  </div>
+  <div class="related-product p-2 d-flex align-items-center border mb-2 rounded">
+    <img src="Snakeplantcart4.2.jpg" class="me-3" alt="">
+    <div>
+      <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/2-Snakeplant.html" target="_blank">
+      <div class="fw-medium">Sansevieria Snake Plant</div>
+      <div class="text-danger">₹523</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Buttons Below Product Details -->
+  <div class="mt-4">
+    <button class="btn btn-add-cart btn-lg w-100 mb-2" id="addToCartBtn" data-product-id="4">Add to cart</button>
+    <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/Askexpertsnakeplant.html" target="_self">
+    <button class="btn btn-success w-100">Ask Expert</button>
+    </a>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+<footer class="site-footer-container">
+  <div class="footer-container">
+
+    <!-- Gardening Knowledge -->
+    <div class="footer-column">
+      <h4>Gardening Knowledge</h4>
+      <ul>
+        <li><a href="#">Blogs > Plant Talk</a></li>
+        <li><a href="#">Blog > Kitchen Gardening</a></li>
+        <li><a href="#">Blogs > Top 10 Plants</a></li>
+        <li><a href="#">Blogs > Sustainable Living</a></li>
+        <li><a href="#">blog.nurserylive.com</a></li>
+        <li><a href="#">wiki.nurserylive.com</a></li>
+      </ul>
+    </div>
+
+    <!-- Useful Links -->
+    <div class="footer-column">
+      <h4>Useful Links</h4>
+      <ul>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">FAQ's</a></li>
+        <li><a href="#">Offers</a></li>
+        <li><a href="#">Rewards</a></li>
+        <li><a href="#">Affiliate</a></li>
+      </ul>
+    </div>
+
+    <!-- About -->
+    <div class="footer-column">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">About Nurserylive</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Jobs</a></li>
+      </ul>
+    </div>
+
+    <!-- Follow Us -->
+    <div class="footer-column social-section">
+      <h4>Follow Us On</h4>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-pinterest-p"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="footer-column subscribe-section">
+      <h4>Subscribe</h4>
+      <p>Join us to receive gardening tips, offers, news & more</p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Email address" required/>
+        <button type="submit">Sign up</button>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Add to Cart functionality for combo
+  document.getElementById('addToCartBtn').addEventListener('click', function() {
+    // Combo product for Snake Plant + Sansevieria Snake Plant
+    const comboProduct = {
+      id: 'snakeplant-combo',
+      name: "Snake Plant Combo (Snake Plant + Sansevieria Snake Plant)",
+      price: 506,
+      img: "Snakeplantcart4.1.jpg",
+      items: [
+        { name: "Snake Plant, Dracaena trifasciata (Pack of 3) - Plant" },
+        { name: "Sansevieria Snake Plant" }
+      ]
+    };
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Check if combo already exists
+    const existing = cart.find(item => item.id === comboProduct.id);
+    if (existing) {
+      existing.quantity = (existing.quantity || 1) + 1;
+    } else {
+      comboProduct.quantity = 1;
+      cart.push(comboProduct);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = "Mycart.html";
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var loginStatus = document.getElementById('loginStatus');
+    if (localStorage.getItem('loggedInUser') === 'Joel') {
+      loginStatus.innerHTML = '<i class="bi bi-lightning-charge login-icon"></i><span id="welcomeJoel" style="cursor:pointer;">Welcome Joel <span style="font-size:0.9em;color:#888;">(Log out)</span></span>';
+      document.getElementById('welcomeJoel').onclick = function() {
+        localStorage.removeItem('loggedInUser');
+        window.location.reload();
+      };
+    } else {
+      loginStatus.innerHTML = '<i class="bi bi-lightning-charge login-icon"></i><span><a href="Loginpage.html">Login</a></span>';
+    }
+  });
+</script>
+</body>
+</html>

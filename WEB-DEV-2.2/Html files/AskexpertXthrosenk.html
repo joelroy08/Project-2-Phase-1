@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3-Expert Here</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      position: relative;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    /* Background image with blur */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') no-repeat center center/cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    h1 {
+      color: #23a323;
+      text-shadow: 2px 2px 5px rgba(182, 174, 174, 0.7);
+      margin-top: 40px;
+      font-size: 3rem;
+    }
+
+    .glass-card {
+      background: rgba(10, 255, 63, 0.15);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      color: rgb(0, 0, 0);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: scale(1.05);
+    }
+
+    .glass-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Expert Here</h1>
+  <div class="container mt-5">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="glass-card">
+          <img src="Xthrotsenkcart1(0).jpg" alt="Aloe Vera">
+          <h3>Pigskin Philodendron</h3>
+<p>🌿 Pigskin Philodendron – Care Tips
+
+Light: Bright, indirect sunlight.
+Soil: Well-draining mix with organic matter.
+Water: Water when top soil feels dry.
+Temperature: 18°C–26°C; avoid frost.
+Fertilizer: Feed monthly during growing season.
+Humidity: Moderate; mist occasionally.
+Care: Prune regularly to maintain shape.
+
+
+</p>        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card">
+          <img src="Xthrotsenkcast1.1.jpg" alt="Snake Plant">
+          <h3>Swiss Chees Vine</h3>
+          <p>🌿 Swiss Chees Vine – Care Tips
+
+Light: Bright, indirect light; avoid harsh direct sun.
+Soil: Well-draining potting mix with peat and perlite.
+Water: Keep soil lightly moist; allow top layer to dry between waterings.
+Temperature: 18°C–27°C; avoid cold drafts.
+Fertilizer: Balanced liquid feed every 4–6 weeks in growing season.
+Humidity: High; mist leaves or use a humidifier.
+Care: Train on a moss pole or let vines trail; prune to encourage bushier growth.
+
+
+
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

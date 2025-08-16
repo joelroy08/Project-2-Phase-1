@@ -1,0 +1,55 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.card img {
+  object-fit: cover;
+  height: 200px;
+}
+
+
+
+
+
+.product-card {
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 10px;
+  height: 100%;
+  transition: transform 0.2s ease;
+  background: white;
+}
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #e53935;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: grey;
+  font-size: 14px;
+}
+.badge-discount {
+  background-color: #ff6b6b;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+}
+

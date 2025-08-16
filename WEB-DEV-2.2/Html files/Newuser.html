@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Marisa Garden</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* Page background */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d4f7d0, #a1e6a0);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* Header */
+.header-main {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.header-main .logo a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #23a323;
+}
+.header-main .support-login {
+    font-size: 0.9rem;
+    color: #333;
+}
+.support-icon {
+    color: #23a323;
+    margin-right: 8px;
+}
+
+/* Form container */
+.container-fluid {
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+/* Glass card */
+.register-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+h2 {
+    color: #23a323;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-control, select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+.form-control:focus, select:focus {
+    border-color: #23a323;
+    box-shadow: 0 0 8px rgba(35, 163, 35, 0.4);
+}
+
+/* Button */
+.btn-primary {
+    background-color: #23a323;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #1c8e1c;
+    transform: scale(1.02);
+}
+
+/* Link */
+a {
+    color: #23a323;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+    <img src="Xthrotsenkcart1.3.jpg" alt="Garden Background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5;">
+
+<!-- Header -->
+<div class="header-main d-flex justify-content-between align-items-center">
+    <div class="logo"><a href="#">Marisa<i>Garden</i></a></div>
+    <div class="support-login d-flex align-items-center">
+        <i class="bi bi-chat-left-text support-icon"></i>
+        <span>Expert Support <br><strong>Available 24/7</strong></span>
+    </div>
+</div>
+
+<!-- Registration Form -->
+<div class="container-fluid">
+    <div class="register-card">
+        <h2>Register</h2>
+        <form id="registerForm" onsubmit="return validateRegister()">
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter first name" required>
+            </div>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter last name" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            
+            <div class="form-group">
+                <label>Gender:</label>
+                <select class="form-control" id="gender" required>
+                    <option value="">-- Select Gender --</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <p class="text-center mt-3">Already have an account? <a href="file:///C:/Users/hp/Desktop/WEB-DEV%20PROJECT%202/Loginpage.html?#" target="_self">Login here</a></p>
+        </form>
+    </div>
+</div>
+
+<script>
+function validateRegister() {
+    const pass = document.getElementById('password').value;
+    const confirmPass = document.getElementById('confirmPassword').value;
+
+    if (pass !== confirmPass) {
+        alert("Passwords do not match!");
+        return false;
+    }
+    alert("Registration successful!");
+    return true;
+}
+</script>
+</body>
+</html>
